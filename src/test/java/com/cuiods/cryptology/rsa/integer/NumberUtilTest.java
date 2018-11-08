@@ -15,10 +15,10 @@ public class NumberUtilTest {
 
     @Test
     public void speedUpMod() {
-        MyInteger num = new MyInteger("2391");
+        MyInteger num = new MyInteger("23911231");
         MyInteger p = new MyInteger("43");
         MyInteger q = new MyInteger("59");
-        MyInteger d = new MyInteger("937");
+        MyInteger d = new MyInteger("937121");
         System.out.println(NumberUtil.speedUpMod(num, d, p, q));
     }
 }

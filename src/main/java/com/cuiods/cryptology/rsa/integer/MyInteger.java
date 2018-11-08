@@ -277,7 +277,7 @@ public class MyInteger {
                     divideNum = (int) (tempNum/divisorVal[0]);
                 }
                 int[] tempToSubtract = multiply(divisorVal, divideNum);
-                if (compareArray(remainderResult, tempToSubtract) < 0) {
+                while (compareArray(remainderResult, tempToSubtract) < 0) {
                     divideNum -- ;
                     tempToSubtract = subtract(tempToSubtract, divisorVal);
                 }

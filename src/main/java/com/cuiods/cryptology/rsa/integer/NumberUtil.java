@@ -1,5 +1,8 @@
 package com.cuiods.cryptology.rsa.integer;
 
+/**
+ * Speed up mod implementation
+ */
 public class NumberUtil {
 
     /**

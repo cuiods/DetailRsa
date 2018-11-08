@@ -29,16 +29,16 @@ public class MyIntegerTest {
 
     @Test
     public void multiply() {
-        MyInteger num1 = new MyInteger("-200000000000000000000");
-        MyInteger num2 = new MyInteger("-100000000000000000000");
+        MyInteger num1 = new MyInteger("-2000000000000000000001111111111111111111111111111111111111111");
+        MyInteger num2 = new MyInteger("-100000000000000000000214141211111121111111111111111111111");
         MyInteger result = num1.multiply(num2);
         System.out.println(result);
     }
 
     @Test
     public void divide() {
-        MyInteger num1 = new MyInteger("6804107402578755072882");
-        MyInteger num2 = new MyInteger("2537");
+        MyInteger num1 = new MyInteger("6804107402578755072882123131241");
+        MyInteger num2 = new MyInteger("25371241414421");
         MyInteger[] result = num1.divide(num2);
         System.out.println(result[0]);
         System.out.println(result[1]);
@@ -53,7 +53,7 @@ public class MyIntegerTest {
 
     @Test
     public void pow() {
-        MyInteger num = new MyInteger("2");
-        System.out.println(num.pow(new MyInteger("200")));
+        MyInteger num = new MyInteger("211");
+        System.out.println(num.pow(new MyInteger("200111")));
     }
 }
