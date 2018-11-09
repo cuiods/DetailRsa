@@ -45,8 +45,8 @@ public class NumberUtil {
         MyInteger numQ = num.mod(q);
         MyInteger dP = d.mod(p.subtract(MyInteger.ONE));
         MyInteger dQ = d.mod(q.subtract(MyInteger.ONE));
-        numP = numP.pow(dP).mod(p);
-        numQ = numQ.pow(dQ).mod(q);
+        numP = speedUpMod(numP, dP, p);
+        numQ = speedUpMod(numQ, dQ, q);
         MyInteger[] x = {numP, numQ};
         MyInteger[] m = {p,q};
         return CrtResult(m, x);

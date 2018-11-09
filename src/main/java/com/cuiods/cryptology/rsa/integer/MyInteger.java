@@ -69,7 +69,7 @@ public class MyInteger {
         //skip zero
         if (cursor == len)
             throw new NumberFormatException("Zero length Integer");
-        while (cursor < len && Character.digit(val.charAt(cursor), 10) == 0) {
+        while (cursor < len && Character.digit(val.charAt(cursor), radix) == 0) {
             cursor++;
         }
 

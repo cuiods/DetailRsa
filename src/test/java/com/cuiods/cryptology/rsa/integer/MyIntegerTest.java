@@ -3,6 +3,7 @@ package com.cuiods.cryptology.rsa.integer;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.math.BigInteger;
 import java.util.Random;
 
 import static org.junit.Assert.*;
@@ -11,8 +12,10 @@ public class MyIntegerTest {
 
     @Test
     public void stringTest() {
-        MyInteger integer = new MyInteger("1",2);
+        MyInteger integer = new MyInteger("1341325135123514353535435353535435434142142131414");
+        BigInteger integer1 = new BigInteger("1341325135123514353535435353535435434142142131414");
         System.out.println(integer.toString(10));
+        System.out.println(integer1.toString(10));
     }
 
     @Test
