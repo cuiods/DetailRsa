@@ -1,5 +1,7 @@
 package com.cuiods.cryptology.rsa.integer;
 
+import java.security.SecureRandom;
+
 /**
  * Speed up mod implementation
  */
@@ -31,7 +33,7 @@ public class NumberUtil {
     }
 
     /**
-     * Calculate num^d mod n
+     * Calculate num^d mod p*q
      * @param num num
      * @param d d
      * @param p n = p * q
@@ -48,5 +50,25 @@ public class NumberUtil {
         MyInteger[] x = {numP, numQ};
         MyInteger[] m = {p,q};
         return CrtResult(m, x);
+    }
+
+    /**
+     * Calculate num^d mod n
+     * @param num num
+     * @param d d
+     * @param n n
+     * @return num^d mod n
+     */
+    public static MyInteger speedUpMod(MyInteger num, MyInteger d, MyInteger n) {
+        if (d.isZero()) return MyInteger.ONE;
+        if (d.compareAbs(MyInteger.ONE)==0) return num.mod(n);
+        num = num.mod(n);
+        MyInteger[] oddTest = d.divide(MyInteger.TWO);
+        MyInteger temp = speedUpMod(num, oddTest[0], n);
+        MyInteger result = temp.multiply(temp).mod(n);
+        if (!oddTest[1].isZero()) {
+            result = result.multiply(num).mod(n);
+        }
+        return result;
     }
 }

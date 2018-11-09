@@ -1,5 +1,7 @@
 package com.cuiods.cryptology.rsa.integer;
 
+import java.util.Random;
+
 /**
  * My big integer implementation
  * @author cuiods
@@ -16,15 +18,16 @@ public class MyInteger {
      */
     private int sign;
 
-    private final static int RADIX_DECIMAL_LENGTH=9;
-
-    private final static int RADIX = 1000000000;
+    public final static int RADIX = 1000000000;
 
     private static final int[] ONE_NUM={1};
     private static final int[] TWO_NUM={2};
     public static final MyInteger ZERO=new MyInteger(0, new int[0]);
     public static final MyInteger ONE=new MyInteger(1, ONE_NUM);
     public static final MyInteger TWO=new MyInteger(1, TWO_NUM);
+    private static final int DIGITS_PER_INT[] = {0, 0, 30, 19, 15, 13, 11,
+            11, 10, 9, 9, 8, 8, 8, 8, 7, 7, 7, 7, 7, 7, 7, 6, 6, 6, 6,
+            6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5};
 
     /**
      * Construct integer directly
@@ -38,11 +41,15 @@ public class MyInteger {
             this.sign = 0;
     }
 
+    public MyInteger(String val) {
+        this(val, 10);
+    }
+
     /**
      * Convert from string to big integer
      * @param val num string
      */
-    public MyInteger(String val) {
+    public MyInteger(String val, int radix) {
         int cursor = 0;
         final int len = val.length();
         if (len == 0)
@@ -73,15 +80,29 @@ public class MyInteger {
         }
 
         //generate digits
+        int digitNum = DIGITS_PER_INT[radix];
         String numberStr = val.substring(cursor);
         int numDigits = numberStr.length();
-        int digitLen = (numDigits-1) / RADIX_DECIMAL_LENGTH + 1;
+        int digitLen = (numDigits-1) / digitNum + 1;
         digits = new int[digitLen];
-        int start = numDigits - (digitLen-1) * RADIX_DECIMAL_LENGTH;
+        int start = numDigits - (digitLen-1) * digitNum;
         for (int i = 0; i < digitLen; i++) {
             String currentStr = numberStr.substring(
-                    Math.max(start+(i-1)*RADIX_DECIMAL_LENGTH,0), start+i*RADIX_DECIMAL_LENGTH);
-            digits[i] = Integer.parseInt(currentStr);
+                    Math.max(start+(i-1)*digitNum,0), start+i*digitNum);
+            digits[i] = Integer.parseInt(currentStr, radix);
+        }
+    }
+
+    /**
+     * Random length integer
+     * @param len digit len
+     * @param random {@link Random}
+     */
+    public MyInteger(int len, Random random) {
+        sign = 1;
+        digits = new int[len];
+        for (int i = 0; i < len; i++) {
+            digits[i] = random.nextInt(RADIX);
         }
     }
 
@@ -161,6 +182,7 @@ public class MyInteger {
         int intLen = integer.digits.length;
 
         for (int i = intLen-1; i >= 0; i--) {
+            if (integer.digits[i]==0) continue;
             int[] multiplyResult = multiply(digits, integer.digits[i]);
             int[] multiplyTemp = new int[multiplyResult.length + intLen -1 -i];
             System.arraycopy(multiplyResult, 0, multiplyTemp, 0, multiplyResult.length);
@@ -270,24 +292,28 @@ public class MyInteger {
             if (compareArray(remainderResult,divisorVal) < 0)
                 divideNum = 0;
             else {
-                if (remainderResult.length == divisorLen)
-                    divideNum = remainderResult[0] / divisorVal[0];
-                else {
-                    long tempNum = (long)remainderResult[0]*RADIX + remainderResult[1];
-                    divideNum = (int) (tempNum/divisorVal[0]);
+                int left = 0;
+                int right = RADIX;
+                int[] tempToSubtract;
+                while (left < right) {
+                    int middle = (left + right) >> 1;
+                    tempToSubtract = multiply(divisorVal, middle);
+                    if (compareArray(tempToSubtract, remainderResult) <= 0) {
+                        left = middle+1;
+                    } else
+                        right = middle;
                 }
-                int[] tempToSubtract = multiply(divisorVal, divideNum);
-                while (compareArray(remainderResult, tempToSubtract) < 0) {
-                    divideNum -- ;
-                    tempToSubtract = subtract(tempToSubtract, divisorVal);
-                }
+                divideNum = left-1;
+                tempToSubtract = multiply(divisorVal, divideNum);
                 remainderResult = subtract(remainderResult, tempToSubtract);
             }
             divideResult[i] = divideNum;
             if (i == dividendLen - divisorLen) break;
 
-            if (isZero(remainderResult))
+            if (isZero(remainderResult)) {
+                remainderResult = new int[1];
                 remainderResult[0] = digits[i + divisorLen];
+            }
             else {
                 int[] tempRemainder = new int[remainderResult.length+1];
                 System.arraycopy(remainderResult, 0, tempRemainder, 0, remainderResult.length);
@@ -330,15 +356,32 @@ public class MyInteger {
 
     @Override
     public String toString() {
+        return toString(10);
+    }
+
+    public String toString(int radix) {
         if (digits == null || digits.length == 0) return "0";
         StringBuilder builder = new StringBuilder(sign<0?"-":"");
-        builder.append(digits[0]);
+        builder.append(Integer.toString(digits[0], radix));
         for (int i = 1; i < digits.length; i++) {
-            StringBuilder temp = new StringBuilder(digits[i] + "");
-            while (temp.length()<RADIX_DECIMAL_LENGTH) temp.insert(0, "0");
+            StringBuilder temp = new StringBuilder(Integer.toString(digits[i], radix) + "");
+            while (temp.length()<DIGITS_PER_INT[radix]) temp.insert(0, "0");
             builder.append(temp);
         }
         return builder.toString();
+    }
+
+
+    public boolean isZero() {
+        return isZero(this);
+    }
+
+    public int getLastNumber() {
+        return digits[digits.length-1];
+    }
+
+    public int length() {
+        return digits.length;
     }
 
     /**

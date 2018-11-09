@@ -3,14 +3,16 @@ package com.cuiods.cryptology.rsa.integer;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Random;
+
 import static org.junit.Assert.*;
 
 public class MyIntegerTest {
 
     @Test
     public void stringTest() {
-        MyInteger integer = new MyInteger("10");
-        System.out.println(integer);
+        MyInteger integer = new MyInteger("1",2);
+        System.out.println(integer.toString(10));
     }
 
     @Test
@@ -29,16 +31,16 @@ public class MyIntegerTest {
 
     @Test
     public void multiply() {
-        MyInteger num1 = new MyInteger("-2000000000000000000001111111111111111111111111111111111111111");
-        MyInteger num2 = new MyInteger("-100000000000000000000214141211111121111111111111111111111");
+        MyInteger num1 = new MyInteger("15169557");
+        MyInteger num2 = new MyInteger("7469390");
         MyInteger result = num1.multiply(num2);
         System.out.println(result);
     }
 
     @Test
     public void divide() {
-        MyInteger num1 = new MyInteger("6804107402578755072882123131241");
-        MyInteger num2 = new MyInteger("25371241414421");
+        MyInteger num1 = new MyInteger("12413413415421534513451451");
+        MyInteger num2 = new MyInteger("13153634636");
         MyInteger[] result = num1.divide(num2);
         System.out.println(result[0]);
         System.out.println(result[1]);
