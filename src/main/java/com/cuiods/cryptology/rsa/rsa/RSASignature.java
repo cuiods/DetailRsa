@@ -41,9 +41,8 @@ public class RSASignature {
             if (tempResult.length() > 0) {
                 MyInteger integer = new MyInteger(tempResult.toString(), 2);
                 MyInteger resultInt = NumberUtil.speedUpMod(integer, E, N);
-                System.out.println(resultInt.toString(2).length());
                 StringBuilder tempStr = new StringBuilder(resultInt.toString(HEX_DIGIT));
-                while (tempStr.length() % (bit/4) != 0)
+                while (tempStr.length() % 2 != 0)
                     tempStr.insert(0, "0");
                 result.append(tempStr);
             }
