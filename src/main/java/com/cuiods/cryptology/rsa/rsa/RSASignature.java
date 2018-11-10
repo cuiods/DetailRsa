@@ -1,6 +1,7 @@
 package com.cuiods.cryptology.rsa.rsa;
 
 import com.cuiods.cryptology.rsa.integer.*;
+import com.cuiods.cryptology.rsa.util.StringConvert;
 
 /**
  * RSA algorithm
@@ -8,7 +9,6 @@ import com.cuiods.cryptology.rsa.integer.*;
  */
 public class RSASignature {
 
-    private int bit = 0;
     private static final int ASCII_BIT = 8;
     private static final int MAX_ASCII = 256;
 
@@ -18,7 +18,6 @@ public class RSASignature {
      * @return 0:N  1:E  2:D   3:P  4:Q
      */
     public String[] generateKeys(int bit) {
-        this.bit = bit/2;
         MyInteger E = new MyInteger("65537");
         // Random P, Q
         MyInteger P = Prime.randomPrime((bit+1)/2);
@@ -44,7 +43,7 @@ public class RSASignature {
      * @param n n in DECIMAL representation
      * @return message
      */
-    public String encryption(String message, String e, String n) {
+    public String encryption(String message, String e, String n, int bit) {
         int charNum = bit / ASCII_BIT;
         MyInteger E = new MyInteger(e);
         MyInteger N = new MyInteger(n);
@@ -64,7 +63,10 @@ public class RSASignature {
                 MyInteger integer = new MyInteger(StringConvert.convert(tempResult.toString(),2,10));
                 MyInteger resultInt = SpeedUp.speedUpMod(integer, E, N);
                 StringBuilder tempStr = new StringBuilder(StringConvert.convert(resultInt.toString(),10,16));
-                while (tempStr.length() % (bit / 2) != 0)
+                int modBit = bit / 2;
+                if ((i+1) * charNum >= message.length())
+                    modBit = 2;
+                while (tempStr.length() % modBit != 0)
                     tempStr.insert(0, "0");
                 result.append(tempStr);
             }
@@ -80,7 +82,7 @@ public class RSASignature {
      * @param q q in DECIMAL representation
      * @return origin message
      */
-    public String decryption(String message, String d, String p, String q) {
+    public String decryption(String message, String d, String p, String q, int bit) {
         StringBuilder result = new StringBuilder();
         MyInteger D = new MyInteger(d);
         MyInteger P = new MyInteger(p);
@@ -106,11 +108,4 @@ public class RSASignature {
         return result.toString();
     }
 
-    public int getBit() {
-        return bit;
-    }
-
-    public void setBit(int bit) {
-        this.bit = bit;
-    }
 }

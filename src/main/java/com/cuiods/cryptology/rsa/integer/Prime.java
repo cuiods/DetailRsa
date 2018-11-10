@@ -1,5 +1,7 @@
 package com.cuiods.cryptology.rsa.integer;
 
+import com.cuiods.cryptology.rsa.util.RandomUtil;
+
 /**
  * Prime generator
  * @author cuiods

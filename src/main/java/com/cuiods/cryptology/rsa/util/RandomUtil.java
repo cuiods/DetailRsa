@@ -1,4 +1,6 @@
-package com.cuiods.cryptology.rsa.integer;
+package com.cuiods.cryptology.rsa.util;
+
+import com.cuiods.cryptology.rsa.integer.MyInteger;
 
 import java.security.SecureRandom;
 import java.util.Random;

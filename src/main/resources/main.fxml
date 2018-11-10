@@ -22,18 +22,18 @@
                      <children>
                         <AnchorPane prefHeight="60.0" prefWidth="1024.0">
                            <children>
-                              <ChoiceBox layoutX="314.0" layoutY="13.0" prefHeight="34.0" prefWidth="172.0" />
+                              <ChoiceBox fx:id="method" layoutX="314.0" layoutY="13.0" prefHeight="34.0" prefWidth="172.0" />
                               <Label layoutX="147.0" layoutY="18.0" text="Encryption Level">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Button layoutX="531.0" layoutY="11.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="143.0" text="Generate Key">
+                              <Button layoutX="531.0" layoutY="11.0" mnemonicParsing="false" onAction="#generateKeys" prefHeight="33.0" prefWidth="143.0" text="Generate Key">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Button>
-                              <Button layoutX="706.0" layoutY="12.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="143.0" text="Reset">
+                              <Button layoutX="706.0" layoutY="12.0" mnemonicParsing="false" onAction="#resetGen" prefHeight="33.0" prefWidth="143.0" text="Reset">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -48,8 +48,8 @@
                                        <font>
                                           <Font size="18.0" />
                                        </font></Label>
-                                    <TextArea editable="false" layoutX="104.0" layoutY="37.0" prefHeight="80.0" prefWidth="790.0" wrapText="true" />
-                                    <TextArea editable="false" layoutX="104.0" layoutY="145.0" prefHeight="80.0" prefWidth="790.0" wrapText="true" />
+                                    <TextArea fx:id="genN" editable="false" layoutX="104.0" layoutY="37.0" prefHeight="80.0" prefWidth="790.0" wrapText="true" />
+                                    <TextArea fx:id="genE" editable="false" layoutX="104.0" layoutY="145.0" prefHeight="80.0" prefWidth="790.0" wrapText="true" />
                                     <Label layoutX="41.0" layoutY="62.0" text="N">
                                        <font>
                                           <Font size="24.0" />
@@ -60,17 +60,17 @@
                                           <Font size="24.0" />
                                        </font>
                                     </Label>
-                                    <Button layoutX="931.0" layoutY="64.0" mnemonicParsing="false" text="Save">
+                                    <Button layoutX="931.0" layoutY="64.0" mnemonicParsing="false" onAction="#genSaveN" text="Save">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Button>
-                                    <Button layoutX="931.0" layoutY="171.0" mnemonicParsing="false" text="Save">
+                                    <Button layoutX="931.0" layoutY="171.0" mnemonicParsing="false" onAction="#genSaveE" text="Save">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Button>
-                                    <Button layoutX="459.0" layoutY="246.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="105.0" text="Save All">
+                                    <Button layoutX="459.0" layoutY="246.0" mnemonicParsing="false" onAction="#saveAllPublic" prefHeight="29.0" prefWidth="105.0" text="Save All">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -84,9 +84,9 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <TextArea editable="false" layoutX="106.0" layoutY="44.0" prefHeight="60.0" prefWidth="790.0" wrapText="true" />
-                                    <TextArea editable="false" layoutX="105.0" layoutY="216.0" prefHeight="80.0" prefWidth="793.0" wrapText="true" />
-                                    <TextArea editable="false" layoutX="106.0" layoutY="133.0" prefHeight="60.0" prefWidth="790.0" wrapText="true" />
+                                    <TextArea fx:id="genP" editable="false" layoutX="106.0" layoutY="44.0" prefHeight="60.0" prefWidth="790.0" wrapText="true" />
+                                    <TextArea fx:id="genD" editable="false" layoutX="105.0" layoutY="216.0" prefHeight="80.0" prefWidth="793.0" wrapText="true" />
+                                    <TextArea fx:id="genQ" editable="false" layoutX="106.0" layoutY="133.0" prefHeight="60.0" prefWidth="790.0" wrapText="true" />
                                     <Label layoutX="49.0" layoutY="58.0" text="P">
                                        <font>
                                           <Font size="24.0" />
@@ -102,22 +102,22 @@
                                           <Font size="24.0" />
                                        </font>
                                     </Label>
-                                    <Button layoutX="934.0" layoutY="60.0" mnemonicParsing="false" text="Save">
+                                    <Button layoutX="934.0" layoutY="60.0" mnemonicParsing="false" onAction="#genSaveP" text="Save">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Button>
-                                    <Button layoutX="934.0" layoutY="149.0" mnemonicParsing="false" text="Save">
+                                    <Button layoutX="934.0" layoutY="149.0" mnemonicParsing="false" onAction="#genSaveQ" text="Save">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Button>
-                                    <Button layoutX="934.0" layoutY="242.0" mnemonicParsing="false" text="Save">
+                                    <Button layoutX="934.0" layoutY="242.0" mnemonicParsing="false" onAction="#genSaveD" text="Save">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Button>
-                                    <Button layoutX="459.0" layoutY="324.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="105.0" text="Save All">
+                                    <Button layoutX="459.0" layoutY="324.0" mnemonicParsing="false" onAction="#saveAllPrivate" prefHeight="29.0" prefWidth="105.0" text="Save All">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -141,33 +141,34 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <TextArea layoutX="104.0" layoutY="37.0" prefHeight="80.0" prefWidth="790.0" wrapText="true" />
-                                    <TextArea layoutX="104.0" layoutY="145.0" prefHeight="80.0" prefWidth="790.0" wrapText="true" />
-                                    <Label layoutX="41.0" layoutY="62.0" text="N">
+                                    <TextArea fx:id="enN" layoutX="104.0" layoutY="64.0" prefHeight="80.0" prefWidth="790.0" wrapText="true" />
+                                    <TextArea fx:id="enE" layoutX="104.0" layoutY="160.0" prefHeight="80.0" prefWidth="790.0" wrapText="true" />
+                                    <Label layoutX="41.0" layoutY="89.0" text="N">
                                        <font>
                                           <Font size="24.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="44.0" layoutY="169.0" text="E">
+                                    <Label layoutX="44.0" layoutY="184.0" text="E">
                                        <font>
                                           <Font size="24.0" />
                                        </font>
                                     </Label>
-                                    <Button layoutX="931.0" layoutY="64.0" mnemonicParsing="false" text="Load">
+                                    <Button layoutX="931.0" layoutY="90.0" mnemonicParsing="false" onAction="#enLoadN" text="Load">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Button>
-                                    <Button layoutX="931.0" layoutY="171.0" mnemonicParsing="false" text="Load">
+                                    <Button layoutX="931.0" layoutY="186.0" mnemonicParsing="false" onAction="#enLoadE" text="Load">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Button>
-                                    <Button layoutX="459.0" layoutY="246.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="105.0" text="Reset">
+                                    <Button layoutX="459.0" layoutY="250.0" mnemonicParsing="false" onAction="#enResetPublic" prefHeight="29.0" prefWidth="105.0" text="Reset">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Button>
+                                    <ChoiceBox fx:id="enMethod" layoutX="421.0" layoutY="17.0" prefHeight="30.0" prefWidth="176.0" />
                                  </children>
                               </AnchorPane>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -177,29 +178,34 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <TextArea layoutX="109.0" layoutY="55.0" prefHeight="156.0" prefWidth="790.0" wrapText="true" />
-                                    <TextArea layoutX="109.0" layoutY="247.0" prefHeight="156.0" prefWidth="790.0" wrapText="true" />
-                                    <Button layoutX="929.0" layoutY="119.0" mnemonicParsing="false" text="Reset">
+                                    <TextArea fx:id="enMessage" layoutX="109.0" layoutY="55.0" prefHeight="140.0" prefWidth="790.0" wrapText="true" />
+                                    <TextArea fx:id="enEncrypted" layoutX="109.0" layoutY="222.0" prefHeight="140.0" prefWidth="790.0" wrapText="true" />
+                                    <Button layoutX="927.0" layoutY="111.0" mnemonicParsing="false" onAction="#enResetMessage" text="Reset">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Button>
-                                    <Label layoutX="14.0" layoutY="121.0" prefHeight="24.0" prefWidth="81.0" text="Message">
+                                    <Label layoutX="14.0" layoutY="113.0" prefHeight="24.0" prefWidth="81.0" text="Message">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="14.0" layoutY="292.0" prefHeight="24.0" prefWidth="95.0" text="Encrypted">
+                                    <Label layoutX="7.0" layoutY="264.0" prefHeight="24.0" prefWidth="95.0" text="Encrypted">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="14.0" layoutY="325.0" prefHeight="24.0" prefWidth="81.0" text="Message">
+                                    <Label layoutX="7.0" layoutY="297.0" prefHeight="24.0" prefWidth="81.0" text="Message">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Button layoutX="929.0" layoutY="311.0" mnemonicParsing="false" text="Save">
+                                    <Button layoutX="932.0" layoutY="283.0" mnemonicParsing="false" onAction="#enSaveEn" text="Save">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="472.0" layoutY="386.0" mnemonicParsing="false" onAction="#encrypt" prefHeight="29.0" prefWidth="105.0" text="Encrpyt">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -223,44 +229,45 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <TextArea layoutX="106.0" layoutY="44.0" prefHeight="60.0" prefWidth="790.0" wrapText="true" />
-                                    <TextArea layoutX="105.0" layoutY="216.0" prefHeight="80.0" prefWidth="793.0" wrapText="true" />
-                                    <TextArea layoutX="106.0" layoutY="133.0" prefHeight="60.0" prefWidth="790.0" wrapText="true" />
-                                    <Label layoutX="49.0" layoutY="58.0" text="P">
+                                    <TextArea fx:id="deP" layoutX="107.0" layoutY="87.0" prefHeight="60.0" prefWidth="790.0" wrapText="true" />
+                                    <TextArea fx:id="deD" layoutX="105.0" layoutY="242.0" prefHeight="60.0" prefWidth="793.0" wrapText="true" />
+                                    <TextArea fx:id="deQ" layoutX="106.0" layoutY="165.0" prefHeight="60.0" prefWidth="790.0" wrapText="true" />
+                                    <Label layoutX="49.0" layoutY="101.0" text="P">
                                        <font>
                                           <Font size="24.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="47.0" layoutY="147.0" text="Q">
+                                    <Label layoutX="47.0" layoutY="179.0" text="Q">
                                        <font>
                                           <Font size="24.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="47.0" layoutY="240.0" text="D">
+                                    <Label layoutX="47.0" layoutY="256.0" text="D">
                                        <font>
                                           <Font size="24.0" />
                                        </font>
                                     </Label>
-                                    <Button layoutX="934.0" layoutY="60.0" mnemonicParsing="false" text="Load">
+                                    <Button layoutX="934.0" layoutY="103.0" mnemonicParsing="false" onAction="#deLoadP" text="Load">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Button>
-                                    <Button layoutX="934.0" layoutY="149.0" mnemonicParsing="false" text="Load">
+                                    <Button layoutX="934.0" layoutY="181.0" mnemonicParsing="false" onAction="#deLoadQ" text="Load">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Button>
-                                    <Button layoutX="934.0" layoutY="242.0" mnemonicParsing="false" text="Load">
+                                    <Button layoutX="934.0" layoutY="258.0" mnemonicParsing="false" onAction="#deLoadD" text="Load">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Button>
-                                    <Button layoutX="459.0" layoutY="316.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="105.0" text="Reset">
+                                    <Button layoutX="454.0" layoutY="323.0" mnemonicParsing="false" onAction="#deResetPrivate" prefHeight="29.0" prefWidth="95.0" text="Reset">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Button>
+                                    <ChoiceBox fx:id="deMethod" layoutX="418.0" layoutY="26.0" prefHeight="30.0" prefWidth="168.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -270,29 +277,34 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <TextArea layoutX="109.0" layoutY="61.0" prefHeight="120.0" prefWidth="790.0" wrapText="true" />
-                                    <TextArea layoutX="109.0" layoutY="217.0" prefHeight="120.0" prefWidth="790.0" wrapText="true" />
-                                    <Button layoutX="927.0" layoutY="107.0" mnemonicParsing="false" text="Load">
+                                    <TextArea fx:id="deEncrypted" layoutX="109.0" layoutY="40.0" prefHeight="120.0" prefWidth="790.0" wrapText="true" />
+                                    <TextArea fx:id="deMessage" layoutX="109.0" layoutY="183.0" prefHeight="120.0" prefWidth="790.0" wrapText="true" />
+                                    <Button layoutX="928.0" layoutY="86.0" mnemonicParsing="false" onAction="#deLoadEn" text="Load">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Button>
-                                    <Label layoutX="14.0" layoutY="265.0" prefHeight="24.0" prefWidth="81.0" text="Message">
+                                    <Label layoutX="14.0" layoutY="231.0" prefHeight="24.0" prefWidth="81.0" text="Message">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="14.0" layoutY="100.0" prefHeight="24.0" prefWidth="95.0" text="Encrypted">
+                                    <Label layoutX="14.0" layoutY="72.0" prefHeight="24.0" prefWidth="95.0" text="Encrypted">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="14.0" layoutY="133.0" prefHeight="24.0" prefWidth="81.0" text="Message">
+                                    <Label layoutX="14.0" layoutY="105.0" prefHeight="24.0" prefWidth="81.0" text="Message">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Button layoutX="930.0" layoutY="263.0" mnemonicParsing="false" text="Save">
+                                    <Button layoutX="928.0" layoutY="229.0" mnemonicParsing="false" onAction="#deSaveMessage" text="Save">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="459.0" layoutY="322.0" mnemonicParsing="false" onAction="#decrypt" prefHeight="29.0" prefWidth="105.0" text="Decrypt">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
