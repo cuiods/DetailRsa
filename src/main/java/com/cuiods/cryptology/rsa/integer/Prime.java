@@ -1,6 +1,9 @@
 package com.cuiods.cryptology.rsa.integer;
 
-
+/**
+ * Prime generator
+ * @author cuiods
+ */
 public class Prime {
 
     private static final MyInteger THREE = new MyInteger("3");
@@ -71,7 +74,7 @@ public class Prime {
         if (n.compareAbs(THREE) <= 0) return true;
         while (k > 0) {
             int a = 2;
-            if (NumberUtil.speedUpMod(new MyInteger(a+""),
+            if (SpeedUp.speedUpMod(new MyInteger(a+""),
                     n.subtract(MyInteger.ONE), n).compareAbs(MyInteger.ONE)!=0)
                 return false;
             k--;
@@ -91,7 +94,7 @@ public class Prime {
         }
         for (int i = 0; i < k; i++) {
             MyInteger a = RandomUtil.randomInteger(MyInteger.TWO, n_1);
-            MyInteger x = NumberUtil.speedUpMod(a,d,n);
+            MyInteger x = SpeedUp.speedUpMod(a,d,n);
             if (x.compareAbs(MyInteger.ONE)==0 || x.compareAbs(n.subtract(MyInteger.ONE))==0)
                 continue;
             int r = 0;

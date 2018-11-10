@@ -4,8 +4,9 @@ import java.security.SecureRandom;
 
 /**
  * Speed up mod implementation
+ * @author cuiods
  */
-public class NumberUtil {
+public class SpeedUp {
 
     /**
      * Calculate CRT result

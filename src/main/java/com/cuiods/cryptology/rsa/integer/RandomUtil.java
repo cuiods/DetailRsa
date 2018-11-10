@@ -3,6 +3,10 @@ package com.cuiods.cryptology.rsa.integer;
 import java.security.SecureRandom;
 import java.util.Random;
 
+/**
+ * Util to generate random {@link MyInteger}
+ * @author cuiods
+ */
 public class RandomUtil {
 
     /**

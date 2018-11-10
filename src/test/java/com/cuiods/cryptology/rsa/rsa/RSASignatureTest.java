@@ -15,7 +15,7 @@ public class RSASignatureTest {
     public void encryption() {
         RSASignature signature = new RSASignature();
         String[] keys = signature.generateKeys(768);
-        String c = signature.encryption("1", keys[1], keys[0]);
+        String c = signature.encryption("RSA (Rivest-Shamir-", keys[1], keys[0]);
         String res = signature.decryption(c, keys[2], keys[3], keys[4]);
         System.out.println(res);
     }
