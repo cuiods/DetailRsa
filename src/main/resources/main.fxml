@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cuiods.cryptology.rsa.controller.RSAController">
+   <center>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Generate Key">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane prefHeight="60.0" prefWidth="1024.0">
+                           <children>
+                              <ChoiceBox layoutX="314.0" layoutY="13.0" prefHeight="34.0" prefWidth="172.0" />
+                              <Label layoutX="147.0" layoutY="18.0" text="Encryption Level">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="531.0" layoutY="11.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="143.0" text="Generate Key">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Button>
+                              <Button layoutX="706.0" layoutY="12.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="143.0" text="Reset">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Button>
+                           </children></AnchorPane>
+                        <Separator layoutY="57.0" prefHeight="5.0" prefWidth="1024.0" />
+                        <SplitPane dividerPositions="0.4287812041116006" layoutY="58.0" orientation="VERTICAL" prefHeight="683.0" prefWidth="1024.0">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <Label layoutX="8.0" layoutY="2.0" prefHeight="24.0" prefWidth="125.0" text="Public Key">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font></Label>
+                                    <TextArea editable="false" layoutX="104.0" layoutY="37.0" prefHeight="80.0" prefWidth="790.0" wrapText="true" />
+                                    <TextArea editable="false" layoutX="104.0" layoutY="145.0" prefHeight="80.0" prefWidth="790.0" wrapText="true" />
+                                    <Label layoutX="41.0" layoutY="62.0" text="N">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="44.0" layoutY="169.0" text="E">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="931.0" layoutY="64.0" mnemonicParsing="false" text="Save">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="931.0" layoutY="171.0" mnemonicParsing="false" text="Save">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="459.0" layoutY="246.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="105.0" text="Save All">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <Label layoutX="7.0" layoutY="2.0" prefHeight="24.0" prefWidth="125.0" text="Private Key">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextArea editable="false" layoutX="106.0" layoutY="44.0" prefHeight="60.0" prefWidth="790.0" wrapText="true" />
+                                    <TextArea editable="false" layoutX="105.0" layoutY="216.0" prefHeight="80.0" prefWidth="793.0" wrapText="true" />
+                                    <TextArea editable="false" layoutX="106.0" layoutY="133.0" prefHeight="60.0" prefWidth="790.0" wrapText="true" />
+                                    <Label layoutX="49.0" layoutY="58.0" text="P">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="47.0" layoutY="147.0" text="Q">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="47.0" layoutY="240.0" text="D">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="934.0" layoutY="60.0" mnemonicParsing="false" text="Save">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="934.0" layoutY="149.0" mnemonicParsing="false" text="Save">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="934.0" layoutY="242.0" mnemonicParsing="false" text="Save">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="459.0" layoutY="324.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="105.0" text="Save All">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children></AnchorPane>
+                          </items>
+                        </SplitPane>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Encryption">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <SplitPane dividerPositions="0.4010840108401084" orientation="VERTICAL" prefHeight="740.0" prefWidth="1024.0">
+                          <items>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="345.0" prefWidth="1022.0">
+                                 <children>
+                                    <Label layoutX="8.0" layoutY="2.0" prefHeight="24.0" prefWidth="125.0" text="Public Key">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextArea layoutX="104.0" layoutY="37.0" prefHeight="80.0" prefWidth="790.0" wrapText="true" />
+                                    <TextArea layoutX="104.0" layoutY="145.0" prefHeight="80.0" prefWidth="790.0" wrapText="true" />
+                                    <Label layoutX="41.0" layoutY="62.0" text="N">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="44.0" layoutY="169.0" text="E">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="931.0" layoutY="64.0" mnemonicParsing="false" text="Load">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="931.0" layoutY="171.0" mnemonicParsing="false" text="Load">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="459.0" layoutY="246.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="105.0" text="Reset">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <Label layoutX="7.0" layoutY="2.0" prefHeight="24.0" prefWidth="125.0" text="Encryption">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextArea layoutX="109.0" layoutY="55.0" prefHeight="156.0" prefWidth="790.0" wrapText="true" />
+                                    <TextArea layoutX="109.0" layoutY="247.0" prefHeight="156.0" prefWidth="790.0" wrapText="true" />
+                                    <Button layoutX="929.0" layoutY="119.0" mnemonicParsing="false" text="Reset">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Label layoutX="14.0" layoutY="121.0" prefHeight="24.0" prefWidth="81.0" text="Message">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="14.0" layoutY="292.0" prefHeight="24.0" prefWidth="95.0" text="Encrypted">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="14.0" layoutY="325.0" prefHeight="24.0" prefWidth="81.0" text="Message">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="929.0" layoutY="311.0" mnemonicParsing="false" text="Save">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children></AnchorPane>
+                          </items>
+                        </SplitPane>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Decryption">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="739.0" prefWidth="1024.0">
+                          <items>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <Label layoutX="7.0" layoutY="2.0" prefHeight="24.0" prefWidth="125.0" text="Private Key">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextArea layoutX="106.0" layoutY="44.0" prefHeight="60.0" prefWidth="790.0" wrapText="true" />
+                                    <TextArea layoutX="105.0" layoutY="216.0" prefHeight="80.0" prefWidth="793.0" wrapText="true" />
+                                    <TextArea layoutX="106.0" layoutY="133.0" prefHeight="60.0" prefWidth="790.0" wrapText="true" />
+                                    <Label layoutX="49.0" layoutY="58.0" text="P">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="47.0" layoutY="147.0" text="Q">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="47.0" layoutY="240.0" text="D">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="934.0" layoutY="60.0" mnemonicParsing="false" text="Load">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="934.0" layoutY="149.0" mnemonicParsing="false" text="Load">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="934.0" layoutY="242.0" mnemonicParsing="false" text="Load">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="459.0" layoutY="316.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="105.0" text="Reset">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <Label layoutX="7.0" layoutY="2.0" prefHeight="24.0" prefWidth="125.0" text="Decryption">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextArea layoutX="109.0" layoutY="61.0" prefHeight="120.0" prefWidth="790.0" wrapText="true" />
+                                    <TextArea layoutX="109.0" layoutY="217.0" prefHeight="120.0" prefWidth="790.0" wrapText="true" />
+                                    <Button layoutX="927.0" layoutY="107.0" mnemonicParsing="false" text="Load">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Label layoutX="14.0" layoutY="265.0" prefHeight="24.0" prefWidth="81.0" text="Message">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="14.0" layoutY="100.0" prefHeight="24.0" prefWidth="95.0" text="Encrypted">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="14.0" layoutY="133.0" prefHeight="24.0" prefWidth="81.0" text="Message">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Button layoutX="930.0" layoutY="263.0" mnemonicParsing="false" text="Save">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+</BorderPane>
