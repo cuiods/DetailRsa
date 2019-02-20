@@ -1,10 +1,28 @@
 # DetailRsa
 Detailed implementation of RSA algorithm.<br/>
-RSA算法的详细实现，包括以下部分：
+RSA算法的详细实现，详细文档参见[这里](https://github.com/cuiods/DetailRsa/blob/master/doc/RSA%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.pdf), 包括以下部分：
 1. 大数的实现
 2. 素数判定算法与素数的生成
 3. 利用剩余系与中国剩余定理进行模算法的优化
 4. 加解密字符串
+
+## 0. 截图
+
+### 1）生成密钥对
+![generate key pic](./pics/0-1.png)<br>
+点击Generate Key可以生成公钥和私钥对，选择Encryption Level可以选择长度，长度包括256、512、768、1024、2048。点击Save可以选择密钥对的保存位置，点击Save All可以将公钥对或私钥对保存到程序当前目录下。<br/>
+![generate key pic](./pics/0-2.png)
+![generate key pic](./pics/0-3.png)
+
+### 2）加密
+![en pic](./pics/0-4.png)<br/>
+在加密页面，上一步生成的公钥会被自动填充到公钥栏，但是可以点击load选择其他文件中保存的公钥，在message框内输入需要加密的文本，点击Encrypt则可以进行文本加密。
+
+### 3) 解密
+![de pic](./pics/0-5.png)<br/>
+在解密步骤，程序会自动填入第一步中生成的密钥和第二步中生成的密文，点击Decrypt可以进行解密，也可以使用其他密文进行解密。点击save可以选择保存位置并保存。
+![de pic](./pics/0-6.png)<br/>
+
 
 ## 1. 大数的实现
 实验要求不使用BigInteger类，但不可否认使用BigInteger类会更快。<br/>
