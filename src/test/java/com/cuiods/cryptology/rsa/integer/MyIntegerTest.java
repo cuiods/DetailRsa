@@ -42,8 +42,8 @@ public class MyIntegerTest {
 
     @Test
     public void divide() {
-        MyInteger num1 = new MyInteger("12413413415421534513451451");
-        MyInteger num2 = new MyInteger("13153634636");
+        MyInteger num1 = new MyInteger("12413413415421534513451451122222222222211112312431535232511234151351132");
+        MyInteger num2 = new MyInteger("13153634636211111111111211321532251521351313515153152465");
         MyInteger[] result = num1.divide(num2);
         System.out.println(result[0]);
         System.out.println(result[1]);
